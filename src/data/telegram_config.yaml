@@ -1,0 +1,12 @@
+me:
+  chat_id: "me"
+nathy:
+  chat_id: CHAT_ID
+  morning_greeting:
+    start_time: "07:00:00"
+    end_time: "08:00:00"
+  afternoon_media:
+    start_time: "18:00:00"
+    end_time: "22:00:00"
+  pills_reminder:
+    time: "21:45:00"

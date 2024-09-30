@@ -1,0 +1,13 @@
+# vscode settings
+.vscode
+
+# python venv and pycache
+.venv
+__pycache__
+
+# media (for saving repo space)
+src/data/media/pics/*
+src/data/media/videos/*
+
+# sensitive data
+src/data/bot.session

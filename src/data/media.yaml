@@ -1,0 +1,192 @@
+afternoon_media:
+  - path: pics/1.jpg
+    uid: 1
+  - path: pics/2.jpg
+    uid: 2
+  - path: pics/3.jpg
+    uid: 3
+  - path: pics/4.jpeg
+    uid: 4
+  - path: pics/5.jpeg
+    uid: 5
+  - path: pics/6.jpg
+    uid: 6
+  - path: pics/7.jpg
+    uid: 7
+  - path: pics/8.jpg
+    uid: 8
+  - path: pics/9.jpg
+    uid: 9
+  - path: pics/10.jpg
+    uid: 10
+  - path: pics/11.jpg
+    uid: 11
+  - path: pics/12.png
+    uid: 12
+  - path: pics/13.jpg
+    uid: 13
+  - path: pics/14.jpg
+    uid: 14
+  - path: pics/15.jpg
+    uid: 15
+  - path: pics/16.jpg
+    uid: 16
+  - path: pics/17.jpg
+    uid: 17
+  - path: pics/18.png
+    uid: 18
+  - path: pics/19.jpeg
+    uid: 19
+  - path: pics/20.jpg
+    uid: 20
+  - path: pics/21.jpg
+    uid: 21
+  - path: pics/22.jpg
+    uid: 22
+  - path: pics/23.jpg
+    uid: 23
+  - path: pics/24.png
+    uid: 24
+  - path: pics/25.png
+    uid: 25
+  - path: pics/26.jpg
+    uid: 26
+  - path: pics/27.jpg
+    uid: 27
+  - path: pics/28.jpg
+    uid: 28
+  - path: pics/29.jpg
+    uid: 29
+  - path: pics/30.jpg
+    uid: 30
+  - path: pics/31.png
+    uid: 31
+  - path: pics/32.jpg
+    uid: 32
+  - path: pics/33.jpg
+    uid: 33
+  - path: pics/34.jpg
+    uid: 34
+  - path: pics/35.jpg
+    uid: 35
+  - path: pics/36.jpg
+    uid: 36
+  - path: pics/37.png
+    uid: 37
+  - path: pics/38.jpeg
+    uid: 38
+  - path: pics/39.jpg
+    uid: 39
+  - path: pics/40.jpeg
+    uid: 40
+  - path: pics/41.jpg
+    uid: 41
+  - path: pics/42.jpg
+    uid: 42
+  - path: pics/43.jpg
+    uid: 43
+  - path: pics/44.jpg
+    uid: 44
+  - path: pics/45.jpg
+    uid: 45
+  - path: pics/46.jpg
+    uid: 46
+  - path: pics/47.jpg
+    uid: 47
+  - path: pics/48.jpg
+    uid: 48
+  - path: pics/49.jpg
+    uid: 49
+  - path: pics/50.jpg
+    uid: 50
+morning_media:
+  - path: videos/1.mp4
+    uid: 1
+  - path: videos/2.mp4
+    uid: 2
+  - path: videos/3.mp4
+    uid: 3
+  - path: videos/4.mp4
+    uid: 4
+  - path: videos/5.mp4
+    uid: 5
+  - path: videos/6.gif
+    uid: 6
+  - path: videos/7.mp4
+    uid: 7
+  - path: videos/8.mp4
+    uid: 8
+  - path: videos/9.mp4
+    uid: 9
+  - path: videos/10.mp4
+    uid: 10
+  - path: videos/11.mp4
+    uid: 11
+  - path: videos/12.mp4
+    uid: 12
+  - path: videos/13.mp4
+    uid: 13
+  - path: videos/14.mp4
+    uid: 14
+  - path: videos/15.gif
+    uid: 15
+  - path: videos/16.mp4
+    uid: 16
+  - path: videos/17.mp4
+    uid: 17
+  - path: videos/18.mp4
+    uid: 18
+  - path: videos/19.mp4
+    uid: 19
+  - path: videos/20.mp4
+    uid: 20
+  - path: videos/21.mp4
+    uid: 21
+  - path: videos/22.mp4
+    uid: 22
+  - path: videos/23.mp4
+    uid: 23
+  - path: videos/24.mp4
+    uid: 24
+  - path: videos/25.mp4
+    uid: 25
+  - path: videos/26.mp4
+    uid: 26
+  - path: videos/27.mp4
+    uid: 27
+  - path: videos/28.mp4
+    uid: 28
+  - path: videos/29.mp4
+    uid: 29
+  - path: videos/30.mp4
+    uid: 30
+  - path: videos/31.mp4
+    uid: 31
+  - path: videos/32.mp4
+    uid: 32
+  - path: videos/33.mp4
+    uid: 33
+  - path: videos/34.mp4
+    uid: 34
+  - path: videos/35.mp4
+    uid: 35
+  - path: videos/36.mp4
+    uid: 36
+  - path: videos/37.mp4
+    uid: 37
+  - path: videos/38.mp4
+    uid: 38
+  - path: videos/39.mp4
+    uid: 39
+  - path: videos/40.mp4
+    uid: 40
+  - path: videos/41.mp4
+    uid: 41
+  - path: videos/42.mp4
+    uid: 42
+  - path: videos/43.mp4
+    uid: 43
+  - path: videos/44.mp4
+    uid: 44
+  - path: videos/45.mp4
+    uid: 45
