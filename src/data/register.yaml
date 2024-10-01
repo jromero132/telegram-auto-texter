@@ -1,8 +1,10 @@
 afternoon_media:
+  - 2
   - 7
   - 15
   - 43
   - 46
+  - 48
   - 49
   - 50
 morning_media:
@@ -13,6 +15,7 @@ morning_media:
   - 5
   - 18
   - 20
+  - 32
   - 36
   - 37
   - 42
@@ -27,3 +30,4 @@ morning_stickers:
   - 35
   - 36
   - 38
+  - 39

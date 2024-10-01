@@ -545,7 +545,6 @@ def start_sending_pills_reminder(scheduler, client):
         await client.send_message(
             user_id, "💊 Amorcito, recuerda tomarte la píldora a las 10. Te amo ❤️"
         )
-        start_sending_pills_reminder(scheduler, client)
 
     scheduler.add_job(
         wrap,

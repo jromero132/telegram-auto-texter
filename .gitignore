@@ -10,4 +10,6 @@ src/data/media/pics/*
 src/data/media/videos/*
 
 # sensitive data
+config.ini
 src/data/bot.session
+src/data/telegram_config.yaml
