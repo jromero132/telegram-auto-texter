@@ -4,6 +4,16 @@ Telegram Auto Texter is a Telegram user bot application designed to send automat
 greetings, and media at scheduled or random times. The user bot utilizes various features of the
 Telegram API to interact with users and provide a seamless experience.
 
+## Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Commands](#commands)
+- [Configuration](#configuration)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Features
 
 - Sends morning and afternoon messages.
