@@ -7,6 +7,8 @@ task scheduling.
 """
 
 import asyncio
+import logging
+import logging.config
 from configparser import ConfigParser, ExtendedInterpolation
 
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
@@ -15,13 +17,25 @@ from telethon.tl.custom.message import Message
 
 from src import worker
 
+logging.config.fileConfig("logging.conf")
+
+# Hidding non-critical logs from other modules
+logging.getLogger("telethon").setLevel(logging.CRITICAL)
+logging.getLogger("apscheduler").setLevel(logging.CRITICAL)
+
+logging.info("User bot is connecting...")
+
+logging.debug("Trying to read the configuration file...")
 config = ConfigParser(interpolation=ExtendedInterpolation())
 config.read("config.ini")
+logging.debug("The configuration file was read successfully.")
 
+logging.debug("Trying to connect the user bot client to Telegram...")
 client = TelegramClient(
     "src/data/bot", config.get("Telegram", "api_id"), config.get("Telegram", "api_hash")
 ).start()
-print("Telegram user bot is now running...")
+logging.debug("User bot client connected to Telegram successfully.")
+logging.info("User bot connected!")
 
 
 @client.on(events.NewMessage("me", pattern="/health"))
@@ -38,7 +52,18 @@ async def handle_health(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the reply.
     """
-    await event.reply(worker.health())
+    logging.debug("Running method `handle_health`...")
+    try:
+        health_status = worker.health()
+        logging.info("Sending health status response: %s", health_status)
+        await event.reply(health_status)
+        logging.info("Health status sent successfully.")
+
+    except Exception as e:
+        logging.error("Error while sending health status response: %s | event = %s", e, event)
+        raise e
+
+    logging.debug("Method `handle_health` finished.")
 
 
 @client.on(events.NewMessage("me", pattern="/greeting_info"))
@@ -55,7 +80,19 @@ async def handle_greeting_info(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the reply.
     """
-    await event.reply(f"Next greeting at {worker.next_greeting_time}")
+    logging.debug("Running method `handle_greeting_info`...")
+    try:
+        next_greeting_time = worker.next_greeting_time
+        logging.info("Next greeting time retrieved: %s", next_greeting_time)
+
+        await event.reply(f"Next greeting at {next_greeting_time}")
+        logging.info("Greeting info sent successfully.")
+
+    except Exception as e:
+        logging.error("Error while sending greeting info response: %s | event = %s", e, event)
+        raise e
+
+    logging.debug("Method `handle_greeting_info` finished.")
 
 
 @client.on(events.NewMessage("me", pattern="/send_greeting"))
@@ -72,8 +109,20 @@ async def handle_send_greeting(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the greeting or the reply.
     """
-    await worker.send_morning_greeting(client)
-    await event.reply("Done!")
+    logging.debug("Running method `handle_send_greeting`...")
+    try:
+        logging.info("Triggering the sending of the morning greeting...")
+        await worker.send_morning_greeting(client)
+        logging.info("Morning greeting sent successfully.")
+
+        await event.reply("Done!")
+        logging.info("Confirmation reply sent to user.")
+
+    except Exception as e:
+        logging.error("Error while sending morning greeting or reply: %s | event = %s", e, event)
+        raise e
+
+    logging.debug("Method `handle_send_greeting` finished.")
 
 
 @client.on(events.NewMessage("me", pattern="/test_greeting"))
@@ -90,8 +139,22 @@ async def handle_test_greeting(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the greeting or the reply.
     """
-    await worker.send_morning_greeting(client, user_id="me", set_as_used=False)
-    await event.reply("Done!")
+    logging.debug("Running method `handle_test_greeting`...")
+    try:
+        logging.info("Triggering the sending of a test morning greeting...")
+        await worker.send_morning_greeting(client, user_id="me", set_as_used=False)
+        logging.info("Test morning greeting sent successfully.")
+
+        await event.reply("Done!")
+        logging.info("Confirmation reply sent to user.")
+
+    except Exception as e:
+        logging.error(
+            "Error while sending test morning greeting or reply: %s | event = %s", e, event
+        )
+        raise e
+
+    logging.debug("Method `handle_test_greeting` finished.")
 
 
 @client.on(events.NewMessage("me", pattern="/afternoon_media_info"))
@@ -108,7 +171,21 @@ async def handle_afternoon_media(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the reply.
     """
-    await event.reply(f"Next greeting at {worker.next_afternoon_media_time}")
+    logging.debug("Running method `handle_afternoon_media`...")
+    try:
+        next_afternoon_media_time = worker.next_afternoon_media_time
+        logging.info("Next afternoon media time retrieved: %s", next_afternoon_media_time)
+
+        await event.reply(f"Next media at {next_afternoon_media_time}")
+        logging.info("Afternoon media info sent successfully.")
+
+    except Exception as e:
+        logging.error(
+            "Error while sending afternoon media info response: %s | event = %s", e, event
+        )
+        raise e
+
+    logging.debug("Method `handle_afternoon_media` finished.")
 
 
 @client.on(events.NewMessage("me", pattern="/send_afternoon_media"))
@@ -125,8 +202,20 @@ async def handle_send_afternoon_media(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the media or the reply.
     """
-    await worker.send_afternoon_media(client)
-    await event.reply("Done!")
+    logging.debug("Running method `handle_send_afternoon_media`...")
+    try:
+        logging.info("Triggering the sending of the afternoon media item...")
+        await worker.send_afternoon_media(client)
+        logging.info("Afternoon media sent successfully.")
+
+        await event.reply("Done!")
+        logging.info("Confirmation reply sent to user.")
+
+    except Exception as e:
+        logging.error("Error while sending afternoon media or reply: %s | event = %s", e, event)
+        raise e
+
+    logging.debug("Method `handle_send_afternoon_media` finished.")
 
 
 @client.on(events.NewMessage("me", pattern="/test_afternoon_media"))
@@ -143,8 +232,22 @@ async def handle_test_afternoon_media(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the media or the reply.
     """
-    await worker.send_afternoon_media(client, user_id="me", set_as_used=False)
-    await event.reply("Done!")
+    logging.debug("Running method `handle_test_afternoon_media`...")
+    try:
+        logging.info("Triggering the sending of a test afternoon media item...")
+        await worker.send_afternoon_media(client, user_id="me", set_as_used=False)
+        logging.info("Test afternoon media sent successfully.")
+
+        await event.reply("Done!")
+        logging.info("Confirmation reply sent to user.")
+
+    except Exception as e:
+        logging.error(
+            "Error while sending test afternoon media or reply: %ss | event = %s", e, event
+        )
+        raise e
+
+    logging.debug("Method `handle_test_afternoon_media` finished.")
 
 
 @client.on(events.NewMessage("me", pattern="/stats"))
@@ -161,7 +264,17 @@ async def handle_stats(event: Message | events.NewMessage):
     Raises:
         Exception: If there is an error while sending the statistics.
     """
-    await worker.send_stats(client, user_id="me")
+    logging.debug("Running method `handle_stats`...")
+    try:
+        logging.info("Triggering the sending of application statistics...")
+        await worker.send_stats(client, user_id="me")
+        logging.info("Statistics sent successfully.")
+
+    except Exception as e:
+        logging.error("Error while sending statistics: %ss | event = %s", e, event)
+        raise e
+
+    logging.debug("Method `handle_stats` finished.")
 
 
 async def main():
@@ -171,11 +284,32 @@ async def main():
     morning greetings, afternoon media, and pill reminders. It then enters an infinite loop to keep
     the application running and responsive.
     """
+    logging.info("Starting the scheduler...")
+    logging.debug("Initializing the scheduler...")
     scheduler = AsyncIOScheduler()
+    logging.debug("Scheduler initialized successfully.")
+
+    logging.debug("Scheduling morning greeting task...")
     worker.start_sending_morning_greeting(scheduler, client, try_today=True)
+    logging.debug("Morning greeting task scheduled successfully.")
+
+    logging.debug("Scheduling afternoon media task...")
     worker.start_sending_afternoon_media(scheduler, client, try_today=True)
+    logging.debug("Afternoon media task scheduled successfully.")
+
+    logging.debug("Scheduling pill reminder task...")
     worker.start_sending_pills_reminder(scheduler, client)
+    logging.debug("Pill reminder task scheduled successfully.")
+
+    logging.debug("Setting up handler to stop pill reminders for today...")
+    worker.handle_stop_sending_pill_reminder_for_today(client)
+    logging.debug("Handler to stop pill reminders for today set up successfully.")
+
+    logging.debug("Starting the scheduler...")
     scheduler.start()
+    logging.debug("Scheduler started successfully.")
+
+    logging.info("User bot is now running!")
     while True:
         await asyncio.sleep(1)
 
